@@ -21,6 +21,7 @@
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
 {% endcomment %}
 {%- unless skip_styles -%}
+  {{ 'component-card-tags.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
 
@@ -203,6 +204,8 @@
                 </span>
               </p>
             {%- endif -%}
+
+            <div class="card__tag">{{ card_product.tags }}</div>
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             {%- if card_product.quantity_price_breaks_configured? -%}
